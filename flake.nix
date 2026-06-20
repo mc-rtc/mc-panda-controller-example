@@ -86,7 +86,7 @@
                   };
                   panda-controller-example-full = {
                     extends = [
-                      "default"
+                      "minimal"
                       "panda-controller-example-minimal"
                     ];
                     runtime = {
