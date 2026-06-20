@@ -10,28 +10,28 @@ on:
       - devel
       - master
       - main
-  jobs:
-    nix:
-      runs-on: "${{ matrix.os }}-latest"
-      strategy:
-        fail-fast: false
-        matrix:
-          include:
-            - os: ubuntu
-              nix-system: x86_64-linux
-            - os: macos
-              nix-system: aarch64-darwin
-      steps:
-        - uses: actions/checkout@v6
-        - uses: cachix/install-nix-action@v31
-        - uses: cachix/cachix-action@v17
-          with:
-            name: mc-rtc-nix
-            authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-            extraPullNames: "ros,gepetto"
-        
-        # Dynamically inject the correct system into the nix build command
-        - run: nix build -L ".#devShells.${{ matrix.nix-system }}.panda-controller-example-full"
+jobs:
+  nix:
+    runs-on: "${{ matrix.os }}-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu
+            nix-system: x86_64-linux
+          - os: macos
+            nix-system: aarch64-darwin
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v17
+        with:
+          name: mc-rtc-nix
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          extraPullNames: "ros,gepetto"
+      
+      # Dynamically inject the correct system into the nix build command
+      - run: nix build -L ".#devShells.${{ matrix.nix-system }}.panda-controller-example-full"
   check:
     if: always()
     name: check-macos-linux-nix
