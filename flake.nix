@@ -108,9 +108,9 @@
               #   src = inputs.your-repository;
               # };
               overrideAttrs.libfranka =
-                { lib, drv-prev, ... }:
+                { drv-prev, pkgs-final, ... }:
                 {
-                  meta.platforms = drv-prev.meta.platforms ++ lib.platforms.darwin;
+                  meta.platforms = drv-prev.meta.platforms ++ pkgs-final.lib.platforms.darwin;
                 };
               packages = {
                 panda-controller-example =
