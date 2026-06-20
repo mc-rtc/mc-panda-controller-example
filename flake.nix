@@ -1,14 +1,40 @@
 {
   description = "Example superbuild environment and controller with mc-panda and macos support";
 
-  inputs = {
-    # 1. Point the top-level input directly to the PR
-    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/pull/561/head";
 
     # 2. Tell mc-rtc-nix to use YOUR nix-ros-overlay PR instead of its default one
+  inputs = {
+    # 1. The PR with the macOS lttng fix
+    #nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/pull/561/head";
+    nix-ros-overlay.url = "github:arntanguy/nix-ros-overlay/fix_jazzy";
+    # nix-ros-overlay.url = "path:/home/arnaud/devel/mc-rtc-nix/gepetto/nix-ros-overlay";
+
+    # 2. Top-level flakoboros (forces it to use the PR)
+    flakoboros = {
+      url = "github:gepetto/flakoboros";
+      inputs.nix-ros-overlay.follows = "nix-ros-overlay";
+    };
+
+    # 3. Top-level gazebros2nix (The missing link!)
+    gazebros2nix = {
+      url = "github:gepetto/gazebros2nix";
+      inputs.flakoboros.follows = "flakoboros";
+      inputs.nix-ros-overlay.follows = "nix-ros-overlay";
+    };
+
+    # 4. Top-level gepetto (forces it to use our modified gazebros2nix & flakoboros)
+    gepetto = {
+      url = "github:gepetto/nix";
+      inputs.gazebros2nix.follows = "gazebros2nix";
+      inputs.flakoboros.follows = "flakoboros";
+      inputs.nix-ros-overlay.follows = "nix-ros-overlay";
+    };
+
+    # 5. Top-level mc-rtc-nix (forces it to use our modified gepetto)
     mc-rtc-nix = {
       url = "github:mc-rtc/nixpkgs";
-      inputs.nix-ros-overlay.follows = "nix-ros-overlay";
+      inputs.gepetto.follows = "gepetto";
+      inputs.flakoboros.follows = "flakoboros";
     };
 
     flake-parts.follows = "mc-rtc-nix/flake-parts";
