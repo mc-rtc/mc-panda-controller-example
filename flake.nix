@@ -60,7 +60,7 @@
             #
             # As always, individual packages can be overridden using flakoboros
             mc-rtc-superbuild =
-              { pkgs, ... }:
+              { pkgs, lib, stdenv, ... }:
               {
                 enable = true;
                 project.pname = "";
@@ -89,8 +89,9 @@
                       "minimal"
                       "panda-controller-example-minimal"
                     ];
+                    # FIXME: disable mc-franka, it does not build on macos
                     runtime = {
-                      apps = [
+                      apps = lib.optionals (!stdenv.hostPlatform.isDarwin) [
                         pkgs.mc-franka
                       ];
                     };
