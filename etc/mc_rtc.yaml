@@ -1,0 +1,3 @@
+MainRobot: PandaDefault
+Timestep: 0.001
+Enabled: PandaControllerExample
