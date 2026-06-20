@@ -2,30 +2,17 @@
   description = "Example superbuild environment and controller with mc-panda and macos support";
 
   inputs = {
-    mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
-    flake-parts.follows = "mc-rtc-nix/flake-parts";
-    systems.follows = "mc-rtc-nix/systems";
-
-    # fix for libttng support in ROS2
+    # 1. Point the top-level input directly to the PR
     nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/pull/561/head";
 
-    # You can override dependencies from a commit/pull request by:
-    # Adding it as input
-    # your-repository.url = "github:username/repository/pull/ID/head";
-    # your-repository.flake = true; # use false if the repository does not have a flake
-  };
+    # 2. Tell mc-rtc-nix to use YOUR nix-ros-overlay PR instead of its default one
+    mc-rtc-nix = {
+      url = "github:mc-rtc/nixpkgs";
+      inputs.nix-ros-overlay.follows = "nix-ros-overlay";
+    };
 
-  nixConfig = {
-    extra-substituters = [
-      "https://mc-rtc-nix.cachix.org"
-      "https://gepetto.cachix.org"
-      "https://attic.iid.ciirc.cvut.cz/ros"
-    ];
-    extra-trusted-public-keys = [
-      "mc-rtc-nix.cachix.org-1:5M3sLvHXJCep4wc1tQl7QuFWL2eH2I0jkuvWtqJDYQs="
-      "gepetto.cachix.org-1:toswMl31VewC0jGkN6+gOelO2Yom0SOHzPwJMY2XiDY="
-      "ros:JR95vUYsShSqfA1VTYoFt1Nz6uXasm5QrcOsGry9f6Q="
-    ];
+    flake-parts.follows = "mc-rtc-nix/flake-parts";
+    systems.follows = "mc-rtc-nix/systems";
   };
 
   outputs =
