@@ -6,6 +6,9 @@
     flake-parts.follows = "mc-rtc-nix/flake-parts";
     systems.follows = "mc-rtc-nix/systems";
 
+    # fix for libttng support in ROS2
+    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/pull/561/head";
+
     # You can override dependencies from a commit/pull request by:
     # Adding it as input
     # your-repository.url = "github:username/repository/pull/ID/head";

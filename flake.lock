@@ -184,6 +184,24 @@
         "type": "github"
       }
     },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "flakoboros": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -715,6 +733,26 @@
         "type": "github"
       }
     },
+    "nix-ros-overlay_3": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1737103205,
+        "narHash": "sha256-fggehhIXatUJoi/lGMcQrvhoydeUlIVvHuVh69uYbAk=",
+        "owner": "lopsided98",
+        "repo": "nix-ros-overlay",
+        "rev": "d7119336dad4b0cbe311684975a9fd51594d965f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lopsided98",
+        "ref": "pull/561/head",
+        "repo": "nix-ros-overlay",
+        "type": "github"
+      }
+    },
     "nix-system-graphics": {
       "inputs": {
         "nixpkgs": [
@@ -818,6 +856,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1733581040,
+        "narHash": "sha256-Qn3nPMSopRQJgmvHzVqPcE3I03zJyl8cSbgnnltfFDY=",
+        "owner": "lopsided98",
+        "repo": "nixpkgs",
+        "rev": "22c3f2cf41a0e70184334a958e6b124fb0ce3e01",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lopsided98",
+        "ref": "nix-ros",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1030,6 +1084,7 @@
           "flake-parts"
         ],
         "mc-rtc-nix": "mc-rtc-nix",
+        "nix-ros-overlay": "nix-ros-overlay_3",
         "systems": [
           "mc-rtc-nix",
           "systems"
@@ -1147,6 +1202,21 @@
       }
     },
     "systems_4": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
