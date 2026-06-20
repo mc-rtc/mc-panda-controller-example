@@ -107,6 +107,11 @@
               # overrideAttrs.your-repository = {
               #   src = inputs.your-repository;
               # };
+              overrideAttrs.libfranka =
+                { lib, drv-prev, ... }:
+                {
+                  meta.platforms = drv-prev.meta.platforms ++ lib.platforms.darwin;
+                };
               packages = {
                 panda-controller-example =
                   {
