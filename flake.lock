@@ -676,11 +676,11 @@
         "rosdistro": "rosdistro"
       },
       "locked": {
-        "lastModified": 1781953502,
-        "narHash": "sha256-Cbg58cNhgn+ddiL187ldu37KUNXmLxdSoZoM9YGRkQA=",
+        "lastModified": 1781954287,
+        "narHash": "sha256-Bfg7j4kqssXby+dimMcH6WcBCZkrvsB1lkmXV7hx3Ow=",
         "owner": "arntanguy",
         "repo": "nix-ros-overlay",
-        "rev": "53d5a05b22cc3b6659626b0f1c46ac2491c8fdeb",
+        "rev": "02f60696d331a6e364f83e2f5f6d0ffbeedcd508",
         "type": "github"
       },
       "original": {
