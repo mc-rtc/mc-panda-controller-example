@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu]
+        os: [ubuntu, macos-latest]
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
