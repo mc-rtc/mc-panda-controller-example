@@ -1,8 +1,7 @@
 {
   description = "Example superbuild environment and controller with mc-panda and macos support";
 
-
-    # 2. Tell mc-rtc-nix to use YOUR nix-ros-overlay PR instead of its default one
+  # 2. Tell mc-rtc-nix to use YOUR nix-ros-overlay PR instead of its default one
   inputs = {
     # 1. The PR with the macOS lttng fix
     #nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/pull/561/head";
@@ -60,7 +59,7 @@
             #
             # As always, individual packages can be overridden using flakoboros
             mc-rtc-superbuild =
-              { pkgs, lib, stdenv, ... }:
+              { pkgs, ... }:
               {
                 enable = true;
                 project.pname = "";
@@ -91,9 +90,10 @@
                     ];
                     # FIXME: disable mc-franka, it does not build on macos
                     runtime = {
-                      apps = lib.optionals (!stdenv.hostPlatform.isDarwin) [
-                        pkgs.mc-franka
-                      ];
+                      # FIXME can't access stdenv, lib here
+                      # apps = lib.optionals (!stdenv.hostPlatform.isDarwin) [
+                      #   pkgs.mc-franka
+                      # ];
                     };
                   };
                 };
