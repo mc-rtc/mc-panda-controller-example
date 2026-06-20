@@ -17,6 +17,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos]
+      build:
+        - "devShells.x86_64-linux.panda-controller-example-full"
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
@@ -26,7 +28,7 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           extraPullNames: "ros,gepetto"
       # - run: nix flake check -L .#panda-controller-example-full
-      - run: nix build -L .#panda-controller-example-full
+      - run: nix build -L ".#${{ matrix.build }}"
   check:
     if: always()
     name: check-macos-linux-nix
