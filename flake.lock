@@ -659,19 +659,19 @@
           "gepetto",
           "systems"
         ],
+        "with-python-trigger": "with-python-trigger",
         "with-ros-trigger": "with-ros-trigger"
       },
       "locked": {
-        "lastModified": 1781975406,
-        "narHash": "sha256-hZHOMpR7pBWE48/xEfoOIDFtDz1N39yBy2oFtOqXAuw=",
+        "lastModified": 1782145040,
+        "narHash": "sha256-JrbWO/YS3pARuxP1q3mEcFqPDct+zzt4Gc9Eo3GMp58=",
         "owner": "mc-rtc",
         "repo": "nixpkgs",
-        "rev": "cfec8f108ad2e59b7b4dc68ad0ed37cf1be35abd",
+        "rev": "0d5737897d8a2777371d09ea28e9678c152756ee",
         "type": "github"
       },
       "original": {
         "owner": "mc-rtc",
-        "ref": "pull/59/head",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1341,6 +1341,21 @@
       "original": {
         "owner": "pyproject-nix",
         "repo": "uv2nix",
+        "type": "github"
+      }
+    },
+    "with-python-trigger": {
+      "locked": {
+        "lastModified": 1657739253,
+        "narHash": "sha256-L9eyTL7njtPBUYmZRYFKCzQFDgua9U9oE7UwCzjZfl8=",
+        "owner": "boolean-option",
+        "repo": "true",
+        "rev": "6ecb49143ca31b140a5273f1575746ba93c3f698",
+        "type": "github"
+      },
+      "original": {
+        "owner": "boolean-option",
+        "repo": "true",
         "type": "github"
       }
     },
