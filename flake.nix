@@ -59,12 +59,10 @@
                       "minimal"
                       "panda-controller-example-minimal"
                     ];
-                    # FIXME: disable mc-franka, it does not build on macos
                     runtime = {
-                      # FIXME can't access stdenv, lib here
-                      # apps = lib.optionals (!stdenv.hostPlatform.isDarwin) [
-                      #   pkgs.mc-franka
-                      # ];
+                      apps = [
+                        pkgs.mc-franka
+                      ];
                     };
                   };
                 };
