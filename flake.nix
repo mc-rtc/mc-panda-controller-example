@@ -2,9 +2,7 @@
   description = "Example superbuild environment and controller with mc-panda and macos support";
 
   inputs = {
-    # mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
-    mc-rtc-nix.url = "github:mc-rtc/nixpkgs/pull/59/head";
-    # mc-rtc-nix.url = "path:/home/arnaud/devel/mc-rtc-nix/nixpkgs";
+    mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
     flake-parts.follows = "mc-rtc-nix/flake-parts";
     systems.follows = "mc-rtc-nix/systems";
     gepetto.follows = "mc-rtc-nix/gepetto";
@@ -61,12 +59,10 @@
                       "minimal"
                       "panda-controller-example-minimal"
                     ];
-                    # FIXME: disable mc-franka, it does not build on macos
                     runtime = {
-                      # FIXME can't access stdenv, lib here
-                      # apps = lib.optionals (!stdenv.hostPlatform.isDarwin) [
-                      #   pkgs.mc-franka
-                      # ];
+                      apps = [
+                        pkgs.mc-franka
+                      ];
                     };
                   };
                 };
